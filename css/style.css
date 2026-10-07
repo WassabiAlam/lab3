@@ -1,1 +1,85 @@
+/* 1. CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* Base Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+
+/* 2. Assign Grid Names */
+.header {
+  grid-area: header;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.nav {
+  grid-area: nav;
+  background-color: #444;
+  color: #fff;
+  padding: 20px;
+}
+
+.main {
+  grid-area: main;
+  background-color: #e2e2e2;
+  padding: 20px;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+/* Card Styling */
+.card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+/* 3. Mobile Layout (< 768px) */
+.page-wrapper {
+  display: grid;
+  gap: 10px;
+  grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "footer";
+}
+
+.main {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+}
+
+/* 4. Desktop Layout (>= 768px) */
+@media (min-width: 768px) {
+  .page-wrapper {
+    grid-template-columns: 220px 1fr;
+    grid-template-areas:
+      "header header"
+      "nav    main"
+      "footer footer";
+  }
+
+  .main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Card 1 spans full width across both columns in the main area */
+  .card-1 {
+    grid-column: 1 / -1;
+  }
+}
